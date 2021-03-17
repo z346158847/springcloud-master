@@ -1,0 +1,29 @@
+eureka:
+  client:
+    serviceUrl:
+      #向注册中心注册服务
+      defaultZone: http://127.0.0.1:8520/eureka/
+server:
+  port: 8522
+spring:
+  application:
+    #服务名
+    name: springcloud-order
+  boot:
+    admin:
+      client:
+        #向springboot admin注册该服务，springboot admin是一个监控springboot工程的一个工具
+        url: http://localhost:8526
+#开启熔断机制
+feign:
+  hystrix:
+    enabled: true
+#springboot admin展示信息配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
